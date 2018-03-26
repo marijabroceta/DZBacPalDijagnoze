@@ -1,0 +1,55 @@
+﻿<Window x:Class="Dijagnoze.UI.PacijentiPrikaz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dijagnoze.UI"
+        mc:Ignorable="d"
+        Title="PacijentiPrikaz" Height="500" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Pretraga" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Grid.Column="1" Name="tbPretraga" Height="30" Width="500"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="1" Name="dgPacijenti" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ime" Width="*"/>
+                    <DataGridTextColumn Header="Prezime" Width="*"/>
+                    <DataGridTextColumn Header="JMBG" Width="*"/>
+                    <DataGridTextColumn Header="Adresa" Width="*"/>
+                    <DataGridTextColumn Header="Pol" Width="*"/>
+                    <DataGridTextColumn Header="Dijagnoza" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Height="30" Width="70" Content="Dodaj" Name="btnDodaj_Click"/>
+            <Button Grid.Column="1" Height="30" Width="70" Content="Izmeni" Name="btnIzmeni_Click"/>
+            <Button Grid.Column="2" Height="30" Width="70" Content="Obrisi" Name="btnObrisi_Click"/>
+            <Button Grid.Column="5" Height="30" Width="70" Content="Zatvori" Name="btnZatvori_Click"/>
+        </Grid>
+    </Grid>
+</Window>
