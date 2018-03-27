@@ -1,0 +1,47 @@
+﻿<Window x:Class="Dijagnoze.UI.DijagnozaPrikaz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dijagnoze.UI"
+        mc:Ignorable="d"
+        Title="DijagnozaPrikaz" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Pretraga" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Name="tbPretraga" Height="30" Width="450"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            
+            <DataGrid Grid.Column="1" Name="dgDijagnoze" AutoGenerateColumns="False" CanUserAddRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id dijagnoze" Width="*" Binding="{Binding IdDijagnoze}"/>
+                    <DataGridTextColumn Header="Sifra" Width="*" Binding="{Binding Sifra}"/>
+                    <DataGridTextColumn Header="NazivD" Width="*" Binding="{Binding NazivD}"/>
+                    <DataGridTextColumn Header="Naziv Latinski" Width="*" Binding="{Binding NazivLatinski}"/>
+                    <DataGridTextColumn Header="Vazi od" Width="*" Binding="{Binding VaziOd}"/>
+                    <DataGridTextColumn Header="Metastaze" Width="*" Binding="{Binding Metastaze}"/>
+                    <DataGridTextColumn Header="Histoloska dijagnoza" Width="*" Binding="{Binding HistoloskaDijagnoza}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Button Content="Izaberite" Name="btnIzaberi" Height="30" Width="70" Margin="659,10,164.6,0" VerticalAlignment="Top" Click="btnIzaberi_Click"/>
+            <Button Content="Zatvori" Height="30" Width="70" RenderTransformOrigin="1.49,0.58" Margin="771,10,52.6,9.6"/>
+        </Grid>
+    </Grid>
+</Window>

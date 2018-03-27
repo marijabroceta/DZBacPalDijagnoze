@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dijagnoze.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,19 @@ namespace Dijagnoze
         {
             InitializeComponent();
         }
+
+        private void btnPacijenti_Click(object sender, RoutedEventArgs e)
+        {
+            var pacijentPrikaz = new PacijentiPrikaz();
+            pacijentPrikaz.Show();
+        }
+
+        private void btnDijagnoze_Click(object sender, RoutedEventArgs e)
+        {
+            var dijagnozePrikaz = new DijagnozaPrikaz(DijagnozaPrikaz.Stanje.PRIKAZ);
+            dijagnozePrikaz.Show();
+        }
+
+        
     }
 }

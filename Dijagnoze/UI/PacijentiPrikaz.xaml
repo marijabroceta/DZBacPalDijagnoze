@@ -28,12 +28,13 @@
             </Grid.ColumnDefinitions>
             <DataGrid Grid.Column="1" Name="dgPacijenti" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserSortColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime" Width="*"/>
-                    <DataGridTextColumn Header="Prezime" Width="*"/>
-                    <DataGridTextColumn Header="JMBG" Width="*"/>
-                    <DataGridTextColumn Header="Adresa" Width="*"/>
-                    <DataGridTextColumn Header="Pol" Width="*"/>
-                    <DataGridTextColumn Header="Dijagnoza" Width="*"/>
+                    <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Ime}"/>
+                    <DataGridTextColumn Header="Prezime" Width="*" Binding="{Binding Prezime}"/>
+                    <DataGridTextColumn Header="JMBG" Width="*" Binding="{Binding Jmbg}"/>
+                    <DataGridTextColumn Header="Adresa" Width="*" Binding="{Binding Adresa}"/>
+                    <DataGridTextColumn Header="Mesto" Width="*" Binding="{Binding Mesto.MestoStanovanja}"/>
+                    <DataGridTextColumn Header="Pol" Width="*" Binding="{Binding Pol}"/>
+                    <DataGridTextColumn Header="Dijagnoza" Width="*" Binding="{Binding Dijagnoza.Sifra}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -46,7 +47,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Height="30" Width="70" Content="Dodaj" Name="btnDodaj_Click"/>
+            <Button Grid.Column="0" Height="30" Width="70" Content="Dodaj" Name="btnDodaj" Click="btnDodaj_Click"/>
             <Button Grid.Column="1" Height="30" Width="70" Content="Izmeni" Name="btnIzmeni_Click"/>
             <Button Grid.Column="2" Height="30" Width="70" Content="Obrisi" Name="btnObrisi_Click"/>
             <Button Grid.Column="5" Height="30" Width="70" Content="Zatvori" Name="btnZatvori_Click"/>

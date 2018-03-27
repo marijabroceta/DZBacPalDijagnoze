@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Dijagnoze.Model;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,26 @@ namespace Dijagnoze.UI
     /// </summary>
     public partial class PacijentiPrikaz : Window
     {
+        private ICollectionView view;
+
         public PacijentiPrikaz()
         {
             InitializeComponent();
+
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Pacijenti);
+
+            dgPacijenti.IsSynchronizedWithCurrentItem = true;
+            dgPacijenti.DataContext = this;
+            dgPacijenti.ItemsSource = view;
+        }
+
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            var noviPacijent = new Pacijenti();
+            
+
+            var pacijentEdit = new PacijentEdit(noviPacijent,PacijentEdit.Operacija.DODAVANJE);
+            pacijentEdit.ShowDialog();
         }
     }
 }

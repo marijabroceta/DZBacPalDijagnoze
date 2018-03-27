@@ -19,8 +19,24 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Ime" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="tbIme"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Ime" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="tbIme" Height="30" Width="450" Text="{Binding Path=Ime}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="Prezime" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="tbPrezime" Height="30" Width="450" Text="{Binding Path=Prezime}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="JMBG" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="tbJmbg" Height="30" Width="450" Text="{Binding Path=Jmbg}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Adresa" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="tbAdresa" Height="30" Width="450" Text="{Binding Path=Adresa}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Mesto" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="cbMesto" Height="30" Width="450" SelectedItem="{Binding Path=MestoStanovanja}" SelectedIndex="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Pol" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="cbPol" Height="30" Width="450" SelectedItem="{Binding Path=Pol}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Dijagnoza&#xD;&#xA;(Sifra)" FontSize="15"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Path=Dijagnoza, Mode=OneWay}" Name="tbDijagnoza" Height="30" Width="380" HorizontalAlignment="Left"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="..." Height="30" Width="50"  Click="btnPickDijagnoza_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,49,0"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Sacuvaj" Height="30" Width="70" Margin="0,0,120,0" Click="btnSacuvaj_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Button Grid.Row="7" Grid.Column="1" Content="Izadji" Height="30" Width="70" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Window>

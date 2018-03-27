@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dijagnoze"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="300">
+        Title="MainWindow" Height="400" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Name="btnPacijenti" Height="50" Width="120" Content="Spisak pacijenata" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,15"/>
-        <Button Name="btnDijagnoze" Height="50" Width="120" Content="Spisak dijagnoza" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0"  Grid.Row="1"/>
+        <Button Grid.Row="0" Name="btnPacijenti" Height="50" Width="120" Content="Spisak pacijenata" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,15" Click="btnPacijenti_Click"/>
+        <Button Name="btnDijagnoze" Height="50" Width="120" Content="Spisak dijagnoza" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0"  Grid.Row="1" Click="btnDijagnoze_Click"/>
     </Grid>
 </Window>
