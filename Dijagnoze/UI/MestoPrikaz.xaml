@@ -1,0 +1,38 @@
+﻿<Window x:Class="Dijagnoze.UI.MestoPrikaz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dijagnoze.UI"
+        mc:Ignorable="d"
+        Title="MestoPrikaz" Height="500" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/pozadina1.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" Name="dgMesto" SelectedItem="{Binding Path=IzabranoMesto}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" Margin="15,15,15,15">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mesto" Binding="{Binding MestoStanovanja}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Width="35" Margin="10,0,0,0" Click="btnDodaj_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Image/add.png" Stretch="None"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Width="35" Margin="60,0,0,0" Click="btnIzmeni_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Image/edit.png" Stretch="None"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Height="35" Width="35" Margin="0,0,10,0" Click="btnZatvori_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Image/close.png" Stretch="None"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

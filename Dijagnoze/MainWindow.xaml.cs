@@ -38,6 +38,10 @@ namespace Dijagnoze
             dijagnozePrikaz.Show();
         }
 
-        
+        private void btnPodesavanja_Click(object sender, RoutedEventArgs e)
+        {
+            var login = new LoginWindow();
+            login.Show();
+        }
     }
 }

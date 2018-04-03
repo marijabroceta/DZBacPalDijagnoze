@@ -77,7 +77,6 @@ namespace Dijagnoze.Model
             return new Mesto()
             {
                 Id = id,
-                
                 MestoStanovanja = mestoStanovanja
             };
         }
@@ -117,7 +116,7 @@ namespace Dijagnoze.Model
 
                 SQLiteCommand cmd = conn.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO mesto (adresa,mesto) VALUES(@adresa,@mesto)";
+                cmd.CommandText = "INSERT INTO mesto (mesto) VALUES(@mesto)";
                
                 
                 cmd.Parameters.AddWithValue("mesto", m.MestoStanovanja);
@@ -128,6 +127,33 @@ namespace Dijagnoze.Model
 
             Aplikacija.Instance.Mesto.Add(m);
             return m;
+        }
+
+        public static void Update(Mesto m)
+        {
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Dijagnoze"].ConnectionString))
+            {
+                conn.Open();
+
+                SQLiteCommand cmd = conn.CreateCommand();
+
+
+                cmd.CommandText = "UPDATE mesto SET mesto = @mesto WHERE id = @id";
+
+                cmd.Parameters.AddWithValue("Id", m.Id);
+                cmd.Parameters.AddWithValue("mesto", m.MestoStanovanja);
+
+
+                cmd.ExecuteNonQuery();
+            }
+            //azuriranje modela
+            foreach (var mesto in Aplikacija.Instance.Mesto)
+            {
+                if (m.Id == mesto.Id)
+                {
+                    mesto.MestoStanovanja = m.MestoStanovanja;
+                }
+            }
         }
         #endregion
     }

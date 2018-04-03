@@ -22,6 +22,7 @@ namespace Dijagnoze.UI
     public partial class DijagnozaPrikaz : Window
     {
         private ICollectionView view;
+        private ICollectionView viewPretraga;
 
         public enum Stanje { PRIKAZ, ODABIR }
         private Stanje stanje;
@@ -50,6 +51,18 @@ namespace Dijagnoze.UI
         {
             SelektovanaDijagnoza = dgDijagnoze.SelectedItem as Dijagnoza;
             this.DialogResult = true;
+            this.Close();
+        }
+
+        private void PretragaDijagnoze_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = tbPretraga.Text;
+            viewPretraga = CollectionViewSource.GetDefaultView(Dijagnoza.PretragaDijagnoze(text));
+            dgDijagnoze.ItemsSource = viewPretraga;
+        }
+
+        private void Zatvori_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

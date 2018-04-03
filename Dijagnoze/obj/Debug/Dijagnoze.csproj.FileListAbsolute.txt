@@ -27,4 +27,10 @@ C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\Dijagnoze.exe
 C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\Dijagnoze.pdb
 C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\DijagnozaPrikaz.g.cs
 C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\DijagnozaPrikaz.baml
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\LoginWindow.g.cs
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\MestoEdit.g.cs
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\LoginWindow.baml
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\MestoEdit.baml
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\MestoPrikaz.g.cs
+C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\UI\MestoPrikaz.baml
 C:\Users\Marija\Dijagnoze\Dijagnoze\obj\Debug\Dijagnoze.csprojResolveAssemblyReference.cache

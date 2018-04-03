@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Marija\Dijagnoze\Dijagnoze\App.xaml
-41197144022
+7-100770467
 
-161752297564
+22546843419
 201043674208
-MainWindow.xaml;UI\DijagnozaPrikaz.xaml;UI\PacijentEdit.xaml;UI\PacijentiPrikaz.xaml;
+MainWindow.xaml;UI\DijagnozaPrikaz.xaml;UI\LoginWindow.xaml;UI\MestoEdit.xaml;UI\MestoPrikaz.xaml;UI\PacijentEdit.xaml;UI\PacijentiPrikaz.xaml;
 
-True
+False
 

@@ -5,13 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dijagnoze"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Glavni prozor" Height="400" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="Btn">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" BorderThickness="1,1,1,1" BorderBrush="Black" Background="Beige">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Image/pozadina1.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Name="btnPacijenti" Height="50" Width="120" Content="Spisak pacijenata" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,15" Click="btnPacijenti_Click"/>
-        <Button Name="btnDijagnoze" Height="50" Width="120" Content="Spisak dijagnoza" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0"  Grid.Row="1" Click="btnDijagnoze_Click"/>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="80" Content="Podesavanja" Margin="0,10,10,0" Click="btnPodesavanja_Click" Style="{StaticResource ResourceKey=Btn}" FontSize="12" />
+        <Button Grid.Row="0" Name="btnPacijenti" Height="70" Width="180" Content="Spisak pacijenata" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Margin="0,0,0,15" Click="btnPacijenti_Click" Style="{StaticResource ResourceKey=Btn}" />
+        <Button Name="btnDijagnoze" Height="70" Width="180" Content="Spisak dijagnoza" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,15,0,0"  Grid.Row="1" Click="btnDijagnoze_Click" Style="{StaticResource ResourceKey=Btn}"/>
     </Grid>
 </Window>

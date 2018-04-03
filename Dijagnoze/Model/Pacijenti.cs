@@ -236,11 +236,25 @@ namespace Dijagnoze.Model
                     p.Id = int.Parse(row["Id"].ToString());
                     p.Ime = row["Ime"].ToString();
                     p.Prezime = row["Prezime"].ToString();
-                    p.Jmbg = row["Jmbg"].ToString();                    
-                    p.Adresa = row["Adresa"].ToString();                                                          
-                    p.Pol = (Pol)Enum.Parse(typeof(Pol), (row["Pol"].ToString()));                   
-                   
-                    p.DatumSmrti = DateTime.Parse(row["DatumSmrti"].ToString());                 
+                    p.Jmbg = row["Jmbg"].ToString();
+                    if (!DBNull.Value.Equals(row["Adresa"].ToString()))
+                    {
+                        p.Adresa = row["Adresa"].ToString();
+                    }
+                    else
+                    {
+                        p.Adresa = "";
+                    }
+                                                                             
+                    p.Pol = (Pol)Enum.Parse(typeof(Pol), (row["Pol"].ToString()));
+                    if (DBNull.Value.Equals(row["DatumSmrti"].ToString()))
+                    {                      
+                        p.DatumSmrti = DateTime.Parse(row["DatumSmrti"].ToString());
+                    }
+                    else
+                    {
+                        p.DatumSmrti = new DateTime();
+                    }                
                     p.MestoId = int.Parse(row["MestoId"].ToString());
                     p.DijagnozaId = int.Parse(row["DijagnozaId"].ToString());
                     p.Aktivan = int.Parse(row["Aktivan"].ToString());
@@ -259,7 +273,7 @@ namespace Dijagnoze.Model
 
                 SQLiteCommand cmd = conn.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO pacijent (ime,prezime,jmbg,pol,adresa,datumSmrti,mestoId,dijagnozaId,aktivan) VALUES (@ime,@prezime,@jmbg,@adresa,@datumSmrti,@pol,@mestoId,@dijagnozaId,@aktivan)";
+                cmd.CommandText = "INSERT INTO pacijent (ime,prezime,jmbg,adresa,pol,datumSmrti,mestoId,dijagnozaId,aktivan) VALUES (@ime,@prezime,@jmbg,@adresa,@pol,@datumSmrti,@mestoId,@dijagnozaId,@aktivan)";
                
                 cmd.Parameters.AddWithValue("ime", p.Ime);
                 cmd.Parameters.AddWithValue("prezime", p.Prezime);
@@ -280,7 +294,7 @@ namespace Dijagnoze.Model
 
         public static void Update(Pacijenti p)
         {
-            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["POP"].ConnectionString))
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Dijagnoze"].ConnectionString))
             {
                 conn.Open();
 
@@ -298,6 +312,7 @@ namespace Dijagnoze.Model
                 cmd.Parameters.AddWithValue("Pol", p.Pol);
                 cmd.Parameters.AddWithValue("MestoId", p.MestoId);
                 cmd.Parameters.AddWithValue("DijagnozaId", p.DijagnozaId);
+                cmd.Parameters.AddWithValue("Aktivan", p.Aktivan);
                 
 
                 cmd.ExecuteNonQuery();
@@ -317,6 +332,63 @@ namespace Dijagnoze.Model
                     pacijent.Aktivan = p.Aktivan;
                 }
             }
+        }
+
+        public static void Delete(Pacijenti p)
+        {
+            p.Aktivan = 1;
+            Update(p);
+        }
+
+        public static ObservableCollection<Pacijenti> PretragaPacijenata(string unos)
+        {
+            var pacijent = new ObservableCollection<Pacijenti>();
+
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Dijagnoze"].ConnectionString))
+            {
+                SQLiteCommand cmd = conn.CreateCommand();
+                SQLiteDataAdapter da = new SQLiteDataAdapter();
+
+                cmd.CommandText = "SELECT * FROM pacijent p INNER JOIN dijagnozad d ON p.dijagnozaId = d.id INNER JOIN mesto m ON p.mestoId = m.id"+
+                    " WHERE (ime LIKE @unos OR prezime LIKE @unos OR jmbg LIKE @unos OR adresa LIKE @unos OR d.sifra LIKE @unos OR m.mesto LIKE @unos) AND aktivan = 0;";
+                cmd.Parameters.AddWithValue("unos", "%" + unos.Trim() + "%");
+                da.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                da.Fill(ds, "pacijent");
+
+                foreach (DataRow row in ds.Tables["pacijent"].Rows)
+                {
+                    var p = new Pacijenti();
+                    p.Id = int.Parse(row["id"].ToString());
+                    p.Ime = row["ime"].ToString();
+                    p.Prezime = row["prezime"].ToString();
+                    p.Jmbg = row["jmbg"].ToString();
+                    if (!DBNull.Value.Equals(row["Adresa"].ToString()))
+                    {
+                        p.Adresa = row["Adresa"].ToString();
+                    }
+                    else
+                    {
+                        p.Adresa = "";
+                    }
+                    p.Pol = (Pol)Enum.Parse(typeof(Pol), (row["Pol"].ToString()));
+                    if (DBNull.Value.Equals(row["DatumSmrti"].ToString()))
+                    {
+                        p.DatumSmrti = DateTime.Parse(row["DatumSmrti"].ToString());
+                    }
+                    else
+                    {
+                        p.DatumSmrti = new DateTime();
+                    }
+                    p.MestoId = int.Parse(row["MestoId"].ToString());
+                    p.DijagnozaId = int.Parse(row["DijagnozaId"].ToString());
+                    p.Aktivan = int.Parse(row["Aktivan"].ToString());
+
+                    pacijent.Add(p);
+                }
+
+            }
+            return pacijent;
         }
 
         #endregion

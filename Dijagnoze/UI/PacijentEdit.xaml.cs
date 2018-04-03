@@ -45,7 +45,7 @@ namespace Dijagnoze.UI
             cbMesto.ItemsSource = viewMesto;
             cbPol.ItemsSource = Enum.GetValues(typeof(Pol)).Cast<Pol>();
 
-            cbMesto.SelectedIndex = 0;
+            //cbMesto.SelectedIndex = 0;
 
             tbIme.DataContext = pacijenti;
             tbPrezime.DataContext = pacijenti;
@@ -54,6 +54,7 @@ namespace Dijagnoze.UI
             cbMesto.DataContext = pacijenti;
             cbPol.DataContext = pacijenti;
             tbDijagnoza.DataContext = pacijenti;
+            dpDatumSmrti.DataContext = pacijenti;
         }
 
         private void btnPickDijagnoza_Click(object sender, RoutedEventArgs e)
@@ -70,6 +71,11 @@ namespace Dijagnoze.UI
             switch (operacija)
             {
                 case Operacija.DODAVANJE:
+                    if (IfExists() == true)
+                    {
+                        MessageBox.Show("Pacijent sa tim JMBG-om vec postoji!");
+                        return;
+                    }
 
                     Pacijenti.Create(pacijenti);
                     break;
@@ -80,6 +86,34 @@ namespace Dijagnoze.UI
                     break;
             }
             Close();
+        }
+
+        private void Izadji_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ProveriDatum_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (pacijenti.DatumSmrti > DateTime.Today)
+            {
+                MessageBox.Show("Datum ne moze biti veci od danasnjeg! ", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
+                return;
+            }
+        }
+
+        private bool IfExists()
+        {
+            foreach (var item in Aplikacija.Instance.Pacijenti)
+            {
+                if (item.Jmbg == pacijenti.Jmbg)
+                {
+                    return true;
+                }
+
+            }
+            return false;
         }
     }
 }

@@ -74,8 +74,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Aplikacija.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="UI\DijagnozaPrikaz.xaml.cs">
       <DependentUpon>DijagnozaPrikaz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MestoEdit.xaml.cs">
+      <DependentUpon>MestoEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MestoPrikaz.xaml.cs">
+      <DependentUpon>MestoPrikaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\PacijentEdit.xaml.cs">
       <DependentUpon>PacijentEdit.xaml</DependentUpon>
@@ -83,6 +93,8 @@
     <Compile Include="UI\PacijentiPrikaz.xaml.cs">
       <DependentUpon>PacijentiPrikaz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Validacija\ValidacijaJmbg.cs" />
+    <Compile Include="UI\Validacija\ValidacijaString.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,6 +108,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\DijagnozaPrikaz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\MestoEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\MestoPrikaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +163,17 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\add.png" />
+    <Resource Include="Image\close.png" />
+    <Resource Include="Image\delete.png" />
+    <Resource Include="Image\edit.png" />
+    <Resource Include="Image\pozadina1.jpg" />
+    <Resource Include="Image\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />

@@ -175,6 +175,41 @@ namespace Dijagnoze.Model
             return dijagnoza;
         }
 
+        public static ObservableCollection<Dijagnoza> PretragaDijagnoze(string unos)
+        {
+            var dijagnoza = new ObservableCollection<Dijagnoza>();
+
+            using (var conn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Dijagnoze"].ConnectionString))
+            {
+                SQLiteCommand cmd = conn.CreateCommand();
+                SQLiteDataAdapter da = new SQLiteDataAdapter();
+
+                cmd.CommandText = "SELECT * FROM dijagnozad WHERE sifra LIKE @unos OR id_dijagnoza LIKE @unos OR nazivd LIKE @unos OR nazivlatinski LIKE @unos OR metastaze LIKE @unos OR histoloska_dijagnoza LIKE @unos";
+                cmd.Parameters.AddWithValue("unos", "%" + unos.Trim() + "%");
+                da.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+                da.Fill(ds, "dijagnozad");
+
+                foreach (DataRow row in ds.Tables["dijagnozad"].Rows)
+                {
+                    var d = new Dijagnoza();
+                    d.Id = int.Parse(row["Id"].ToString());
+                    d.IdDijagnoze = row["Id_Dijagnoza"].ToString();
+                    d.Sifra = row["Sifra"].ToString();
+                    d.NazivD = row["NazivD"].ToString();
+                    d.NazivLatinski = row["NazivLatinski"].ToString();
+                    d.VaziOd = DateTime.Parse(row["Vazi_Od"].ToString());
+                    d.Metastaze = row["Metastaze"].ToString();
+                    d.HistoloskaDijagnoza = row["Histoloska_Dijagnoza"].ToString();
+
+                    dijagnoza.Add(d);
+                }
+
+            }
+            return dijagnoza;
+        }
+
+
         #endregion
     }
 }
